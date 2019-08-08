@@ -54,33 +54,66 @@ module.exports = class extends Generator {
   writing() {
     const pkgJson = {
       devDependencies: {
-        eslint: '^3.15.0'
+
       },
       dependencies: {
-        react: '^16.2.0'
+
       }
     };
     this.fs.extendJSON(this.destinationPath('package.json'), pkgJson);//
+    this.fs.copy(
+      this.templatePath('assets/'),
+      this.destinationPath('assets/')
+    );
     this.fs.copy(
       this.templatePath('base/'),
       this.destinationPath('base/')
     );
     this.fs.copy(
-      this.templatePath('common/'),
-      this.destinationPath('common/')
+      this.templatePath('css/'),
+      this.destinationPath('css/')
     );
-   /* this.fs.copy(
-      this.templatePath('css'),
-      // this.destinationPath('css/')
+    // mkdir("dist")
+    this.fs.copy(
+      this.templatePath('js/'),
+      this.destinationPath('js/')
     );
     this.fs.copy(
-      this.templatePath('images'),
-      // this.destinationPath('images/')
+      this.templatePath('lib/'),
+      this.destinationPath('lib/')
     );
     this.fs.copy(
-      this.templatePath('js'),
-      // this.destinationPath('js/')
-    );*/
+      this.templatePath('page/'),
+      this.destinationPath('page/')
+    );
+    this.fs.copy(
+      this.templatePath('pageDefine/'),
+      this.destinationPath('pageDefine/')
+    );
+    this.fs.copy(
+      this.templatePath('templates/'),
+      this.destinationPath('templates/')
+    );
+    this.fs.copy(
+      this.templatePath('.babelrc'),
+      this.destinationPath('.babelrc')
+    );
+    this.fs.copy(
+      this.templatePath('.gitignore'),
+      this.destinationPath('.gitignore')
+    );
+    this.fs.copy(
+      this.templatePath('package.json'),
+      this.destinationPath('package.json')
+    );
+    this.fs.copy(
+      this.templatePath('README.md'),
+      this.destinationPath('README.md')
+    );
+    this.fs.copy(
+      this.templatePath('webpack.config.js'),
+      this.destinationPath('webpack.config.js')
+    );
   }
 
   conflicts(){
@@ -93,6 +126,6 @@ module.exports = class extends Generator {
   }
 
   end(){
-
+    console.log("脚手架创建完成，现在可以创建基于jquery和bootstrap的项目了！")
   }
 };
