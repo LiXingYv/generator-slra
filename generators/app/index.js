@@ -121,6 +121,7 @@ module.exports = class extends Generator {
   }
 
   install() {
+    console.log("正在安装依赖，请稍侯……")
     // this.installDependencies();//调用bower和npm安装依赖
     this.npmInstall();//调用npm安装依赖
   }
